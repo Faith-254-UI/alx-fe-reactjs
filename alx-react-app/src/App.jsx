@@ -1,3 +1,4 @@
+// src/App.jsx
 import './App.css';
 import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
@@ -6,15 +7,12 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <>
-      {/* WelcomeMessage component */}
+    <div>
       <WelcomeMessage />
-
-      {/* Specific components */}
       <Header />
       <MainContent />
       <Footer />
-    </>
+    </div>
   );
 }
 
