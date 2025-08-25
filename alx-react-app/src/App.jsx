@@ -1,4 +1,3 @@
-// src/App.jsx
 import './App.css';
 import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
