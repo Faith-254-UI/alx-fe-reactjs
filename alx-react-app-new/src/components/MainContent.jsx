@@ -1,18 +1,13 @@
 import React from 'react';
+import './MainContent.css';
 
-const footerStyle = {
-  background: "#282c34",
-  color: "#fff",
-  textAlign: "center",
-  padding: "1rem",
-  borderRadius: "0 0 8px 8px",
-  marginTop: "2rem",
-};
-
-const Footer = () => (
-  <footer style={footerStyle}>
-    <p>&copy; 2025 Faith-254-UI. All rights reserved.</p>
-  </footer>
+const MainContent = () => (
+  <main className="main-content">
+    <h2>Main Content Area</h2>
+    <p>
+      Welcome to the main section of your Vite + React + TypeScript project!
+    </p>
+  </main>
 );
 
-export default Footer;
+export default MainContent;
