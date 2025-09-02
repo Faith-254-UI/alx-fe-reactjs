@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.css';
 import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
@@ -7,12 +6,11 @@ import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';
 import Counter from './components/Counter';
 
-// Import Context and ProfilePage for the new task
+// Import the context
 import UserContext from './UserContext';
-import ProfilePage from './components/ProfilePage';
 
 function App() {
-  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+  const userData = { name: "Alice", age: 25, bio: "Loves hiking and photography" };
 
   return (
     <div>
@@ -20,18 +18,12 @@ function App() {
       <Header />
       <MainContent />
       <Counter />  {/* ✅ Counter component added */}
-      
-      {/* Context API example */}
-      <UserContext.Provider value={userData}>
-        <ProfilePage />
-      </UserContext.Provider>
-
       <Footer />
-      <UserProfile 
-        name="Alice" 
-        age={25} 
-        bio="Loves hiking and photography" 
-      />
+
+      {/* Wrap UserProfile with context */}
+      <UserContext.Provider value={userData}>
+        <UserProfile />
+      </UserContext.Provider>
     </div>
   );
 }
