@@ -3,10 +3,8 @@ import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import UserProfile from './components/UserProfile';
 import Counter from './components/Counter';
-
-// Import the context
+import UserProfile from './components/UserProfile';
 import UserContext from './UserContext';
 
 function App() {
@@ -17,7 +15,7 @@ function App() {
       <WelcomeMessage />
       <Header />
       <MainContent />
-      <Counter />  {/* ✅ Counter component added */}
+      <Counter />
       <Footer />
 
       {/* Wrap UserProfile with context */}
