@@ -11,18 +11,16 @@ function App() {
   const userData = { name: "Alice", age: 25, bio: "Loves hiking and photography" };
 
   return (
-    <div>
-      <WelcomeMessage />
-      <Header />
-      <MainContent />
-      <Counter />
-      <Footer />
-
-      {/* Wrap UserProfile with context */}
-      <UserContext.Provider value={userData}>
+    <UserContext.Provider value={userData}>
+      <div>
+        <WelcomeMessage />
+        <Header />
+        <MainContent />
+        <Counter />
+        <Footer />
         <UserProfile />
-      </UserContext.Provider>
-    </div>
+      </div>
+    </UserContext.Provider>
   );
 }
 
