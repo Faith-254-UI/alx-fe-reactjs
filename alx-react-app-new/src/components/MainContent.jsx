@@ -1,13 +1,13 @@
 import React from 'react';
 import './MainContent.css';
 
-const MainContent = () => (
-  <main className="main-content">
-    <h2>Main Content Area</h2>
-    <p>
-      Welcome to the main section of your Vite + React + TypeScript project!
-    </p>
-  </main>
-);
+const MainContent = () => {
+  return (
+    <main className="main-content">
+      <h1>Main Content</h1>
+      <p>I love to visit New York, Paris, and Tokyo.</p>
+    </main>
+  );
+};
 
 export default MainContent;
