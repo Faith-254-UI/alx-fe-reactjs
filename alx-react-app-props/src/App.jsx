@@ -1,6 +1,6 @@
 // src/App.jsx
 import UserContext from './UserContext';
-import UserProfile from './UserProfile';
+import UserProfile from './components/UserProfile';
 
 const userData = {
   name: "Jane Doe",
