@@ -18,6 +18,7 @@ function App() {
       <Counter />
       <Footer />
 
+      {/* Wrap UserProfile with UserContext.Provider */}
       <UserContext.Provider value={userData}>
         <UserProfile />
       </UserContext.Provider>

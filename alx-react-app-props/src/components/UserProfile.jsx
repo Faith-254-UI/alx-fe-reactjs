@@ -5,10 +5,15 @@ function UserProfile() {
   const user = useContext(UserContext);
 
   return (
-    <div style={{ border: "2px solid blue", padding: "10px", margin: "10px", textAlign: "center" }}>
-      <span style={{ color: "blue" }}>Name: {user.name}</span><br />
-      <span style={{ color: "blue" }}>Age: {user.age}</span><br />
-      <span style={{ color: "blue" }}>Bio: {user.bio}</span>
+    <div style={{
+      color: 'blue',
+      border: 'solid 10px blue',
+      padding: '10px',
+      margin: '10px'
+    }}>
+      <h2>{user.name}</h2>
+      <p>Age: {user.age}</p>
+      <p>Bio: {user.bio}</p>
     </div>
   );
 }
