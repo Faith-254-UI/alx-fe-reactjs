@@ -5,7 +5,7 @@ import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import Counter from './components/Counter';
 import UserProfile from './components/UserProfile';
-import UserContext from './UserContext';  // Import context
+import UserContext from './UserContext';
 
 function App() {
   const userData = { name: "Alice", age: 25, bio: "Loves hiking and photography" };
@@ -18,7 +18,6 @@ function App() {
       <Counter />
       <Footer />
 
-      {/* Wrap UserProfile with context */}
       <UserContext.Provider value={userData}>
         <UserProfile />
       </UserContext.Provider>
