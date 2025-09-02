@@ -1,12 +1,14 @@
-// UserProfile.jsx
-import React from "react";
-import UserDetails from "./UserDetails";
+import React, { useContext } from 'react';
+import UserContext from '../UserContext';
 
 function UserProfile() {
+  const user = useContext(UserContext);
+
   return (
     <div>
-      <h2>User Profile</h2>
-      <UserDetails />
+      <h2>{user.name}</h2>
+      <p>Age: {user.age}</p>
+      <p>Bio: {user.bio}</p>
     </div>
   );
 }
