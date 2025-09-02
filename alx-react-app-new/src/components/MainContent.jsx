@@ -1,5 +1,4 @@
 import React from 'react';
-import './MainContent.css';
 
 const mainContentStyle = {
   backgroundColor: '#f5f5f5',
