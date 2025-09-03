@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { UserProvider } from "./UserContext"; // Import the provider
+import { UserProvider } from "./UserContext";
 
+// Wrap App with UserProvider
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // Wrap App inside UserProvider
   <UserProvider>
     <App />
   </UserProvider>

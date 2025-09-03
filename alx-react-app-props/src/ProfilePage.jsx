@@ -1,15 +1,7 @@
-import React from "react";
-import UserProfile from "./UserProfile";
-import UserInfo from "./UserInfo";
+import React from 'react';
 
 const ProfilePage = () => {
-  return (
-    <div>
-      <h1>Profile Page</h1>
-      <UserInfo />
-      <UserProfile />
-    </div>
-  );
+  return <div>Profile Page Placeholder</div>;
 };
 
 export default ProfilePage;
