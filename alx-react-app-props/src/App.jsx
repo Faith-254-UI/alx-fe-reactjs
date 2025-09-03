@@ -1,13 +1,20 @@
-import React from 'react';
-import UserProfile from './UserProfile';
+// src/App.jsx
+import React from "react";
+import ProfilePage from "./ProfilePage";
+import UserContext from "./UserContext";
 
-const App = () => {
+function App() {
+  const userData = {
+    name: "Niva Faith",
+    email: "niva@example.com",
+    age: 21,
+  };
+
   return (
-    <div>
-      <h1>Welcome to My App</h1>
-      <UserProfile />
-    </div>
+    <UserContext.Provider value={userData}>
+      <ProfilePage />
+    </UserContext.Provider>
   );
-};
+}
 
 export default App;
