@@ -1,21 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";  // ✅ fixed path
-import Home from "./components/Home";
-import About from "./components/About";
-import Services from "./components/Services";
-import Contact from "./components/Contact";
+import React from 'react';
+import ProfilePage from './ProfilePage';
+import UserContext from './UserContext';
 
 function App() {
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </Router>
+    // Wrap the component tree with UserContext.Provider.
+    // The `value` prop is where you pass the data you want to share.
+    <UserContext.Provider value={userData}>
+      <ProfilePage />
+    </UserContext.Provider>
   );
 }
 
