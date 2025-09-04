@@ -1,12 +1,7 @@
-import UserDetails from "./UserDetails";
+import UserDetails from './UserDetails';
 
 function UserInfo() {
-  return (
-    <div>
-      <h2>User Info</h2>
-      <UserDetails />
-    </div>
-  );
+  return <UserDetails />;
 }
 
 export default UserInfo;
