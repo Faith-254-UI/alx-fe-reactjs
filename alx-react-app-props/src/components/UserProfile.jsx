@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { UserContext } from './UserContext';
+import { UserContext } from '../UserContext';   // 👈 notice the "../" since UserContext is outside components
 
-function UserDetails() {
+function UserProfile() {
   const userData = useContext(UserContext);
 
   return (
@@ -12,4 +12,4 @@ function UserDetails() {
   );
 }
 
-export default UserDetails;
+export default UserProfile;
