@@ -1,7 +1,7 @@
-import UserDetails from './UserDetails';
+import UserProfile from './UserProfile';
 
-function UserInfo() { // Remove userData prop
-  return <UserDetails />; // No need to pass userData prop here anymore
+function UserInfo() {
+  return <UserProfile />;
 }
 
 export default UserInfo;
