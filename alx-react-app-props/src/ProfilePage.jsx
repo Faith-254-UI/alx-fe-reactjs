@@ -1,7 +1,7 @@
 import UserInfo from './UserInfo';
 
-function ProfilePage() { // Remove userData from props
-  return <UserInfo />; // Remove userData prop here
+function ProfilePage() { // Remove userData prop
+  return <UserInfo />; // No need to pass userData prop here anymore
 }
 
 export default ProfilePage;
