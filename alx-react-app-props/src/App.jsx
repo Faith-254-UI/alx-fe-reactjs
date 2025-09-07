@@ -1,11 +1,12 @@
-﻿import UserContext from './UserContext';
+﻿import UserContext from './components/UserContext';
 import UserProfile from './components/UserProfile';
 
 function App() {
   const userData = {
     name: 'Alice',
     age: 25,
-    bio: 'Loves hiking and photography'
+    bio: 'Loves hiking and photography',
+    email: 'alice@example.com'
   };
 
   return (
