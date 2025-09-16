@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getUser, searchUsers } from "../services/api";
-import { fetchUserData } from "../services/githubService"; // 🔹 Task 1 import
+import { fetchUserData } from "../services/githubService";
 import UserCard from "./UserCard";
 
 export default function Search() {
@@ -43,8 +43,9 @@ export default function Search() {
     }
   };
 
-  // 🔹 New Task 1 handler: Fetch a single user with githubService
-  const handleFetchUserData = async () => {
+  // Task 1 handler: uses form submission
+  const handleFetchUserData = async (e) => {
+    e.preventDefault(); // 🔹 prevent page reload
     const username = q.trim();
     if (!username) return;
     setLoading(true); setError(""); setResults([]); setUser(null);
@@ -53,7 +54,7 @@ export default function Search() {
       setUser(res.data);
     } catch (err) {
       if (err.response && err.response.status === 404) {
-        setError("Looks like we can’t find the user.");
+        setError("Looks like we cant find the user"); // 🔹 exact text
       } else {
         setError("Something went wrong. Try again.");
       }
@@ -65,16 +66,21 @@ export default function Search() {
 
   return (
     <div>
-      <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+      {/* 🔹 Wrap input + button in a form for Task 1 */}
+      <form onSubmit={handleFetchUserData} style={{ display: "flex", gap: 8, marginBottom: 12 }}>
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Enter GitHub username or search keywords"
           style={{ flex: 1, padding: "8px 10px" }}
         />
+        <button type="submit">Fetch User</button> {/* Task 1 */}
+      </form>
+
+      {/* Keep existing buttons for other features */}
+      <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
         <button onClick={handleGetUser}>Get User</button>
         <button onClick={handleSearch}>Search</button>
-        <button onClick={handleFetchUserData}>Fetch User (Task 1)</button> {/* 🔹 New */}
       </div>
 
       {loading && <p>Loading…</p>}
@@ -82,12 +88,9 @@ export default function Search() {
 
       {user && (
         <div style={{ marginTop: 12 }}>
-          {/* 🔹 Task 1 requires avatar, name, link */}
           <img src={user.avatar_url} alt={user.login} width={80} style={{ borderRadius: "50%" }} />
           <h3>{user.name || user.login}</h3>
           <a href={user.html_url} target="_blank" rel="noreferrer">Visit Profile</a>
-
-          {/* Keep your existing UserCard for consistency */}
           <UserCard user={user} />
         </div>
       )}
