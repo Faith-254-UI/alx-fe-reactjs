@@ -25,7 +25,11 @@ export default function Search() {
       const res = await fetchUserData(username);
       setUser(res.data);
     } catch (err) {
-      setError(err.response?.status === 404 ? "User not found." : "Something went wrong.");
+      if (err.response?.status === 404) {
+        setError("Looks like we cant find the user");
+      } else {
+        setError("Something went wrong.");
+      }
     } finally {
       setLoading(false);
     }
