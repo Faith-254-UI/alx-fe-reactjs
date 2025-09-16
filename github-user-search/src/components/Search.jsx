@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { getUser, searchUsers } from "../services/api";
+import { fetchUserData } from "../services/githubService"; // 🔹 Task 1 import
 import UserCard from "./UserCard";
 
 export default function Search() {
@@ -9,6 +10,7 @@ export default function Search() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Existing "Get User" handler
   const handleGetUser = async () => {
     const username = q.trim();
     if (!username) return;
@@ -25,6 +27,7 @@ export default function Search() {
     }
   };
 
+  // Existing "Search" handler
   const handleSearch = async () => {
     const query = q.trim();
     if (!query) return;
@@ -34,6 +37,26 @@ export default function Search() {
       setResults(res.data.items || []);
     } catch (err) {
       setError("Search failed.");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 🔹 New Task 1 handler: Fetch a single user with githubService
+  const handleFetchUserData = async () => {
+    const username = q.trim();
+    if (!username) return;
+    setLoading(true); setError(""); setResults([]); setUser(null);
+    try {
+      const res = await fetchUserData(username);
+      setUser(res.data);
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        setError("Looks like we can’t find the user.");
+      } else {
+        setError("Something went wrong. Try again.");
+      }
       console.error(err);
     } finally {
       setLoading(false);
@@ -51,6 +74,7 @@ export default function Search() {
         />
         <button onClick={handleGetUser}>Get User</button>
         <button onClick={handleSearch}>Search</button>
+        <button onClick={handleFetchUserData}>Fetch User (Task 1)</button> {/* 🔹 New */}
       </div>
 
       {loading && <p>Loading…</p>}
@@ -58,6 +82,12 @@ export default function Search() {
 
       {user && (
         <div style={{ marginTop: 12 }}>
+          {/* 🔹 Task 1 requires avatar, name, link */}
+          <img src={user.avatar_url} alt={user.login} width={80} style={{ borderRadius: "50%" }} />
+          <h3>{user.name || user.login}</h3>
+          <a href={user.html_url} target="_blank" rel="noreferrer">Visit Profile</a>
+
+          {/* Keep your existing UserCard for consistency */}
           <UserCard user={user} />
         </div>
       )}
