@@ -12,7 +12,7 @@ export default function Search() {
   const [error, setError] = useState("");
   const [page, setPage] = useState(1);
 
-  // --- Basic Fetch Single User ---
+  // --- Fetch Single User ---
   const handleFetchUserData = async (e) => {
     e.preventDefault();
     const username = q.trim();
@@ -26,7 +26,6 @@ export default function Search() {
       setUser(res.data);
     } catch (err) {
       setError(err.response?.status === 404 ? "User not found." : "Something went wrong.");
-      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -44,9 +43,8 @@ export default function Search() {
       const res = await searchUsers(query);
       setResults(res.data.items || []);
       setPage(1);
-    } catch (err) {
+    } catch {
       setError("Search failed.");
-      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -64,15 +62,14 @@ export default function Search() {
       const res = await advancedSearchUsers({ query, location, minRepos, page: 1 });
       setResults(res.data.items || []);
       setPage(1);
-    } catch (err) {
+    } catch {
       setError("Advanced search failed.");
-      console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
-  // --- Load More Results (Pagination) ---
+  // --- Load More (Pagination) ---
   const loadMore = async () => {
     const query = q.trim();
     if (!query) return;
@@ -81,9 +78,8 @@ export default function Search() {
       const res = await advancedSearchUsers({ query, location, minRepos, page: page + 1 });
       setResults(prev => [...prev, ...(res.data.items || [])]);
       setPage(prev => prev + 1);
-    } catch (err) {
+    } catch {
       setError("Failed to load more users.");
-      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -125,9 +121,9 @@ export default function Search() {
         </button>
       </div>
 
-      {/* Existing Buttons */}
+      {/* Search Button */}
       <div className="flex gap-2 mb-4">
-        <button onClick={() => handleSearch()} className="bg-gray-500 text-white px-4 rounded">Search</button>
+        <button onClick={handleSearch} className="bg-gray-500 text-white px-4 rounded">Search</button>
       </div>
 
       {/* Status Messages */}
@@ -163,7 +159,7 @@ export default function Search() {
             ))}
           </div>
 
-          {/* Load More Button */}
+          {/* Load More */}
           {results.length >= 30 && (
             <button
               onClick={loadMore}
