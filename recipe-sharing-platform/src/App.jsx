@@ -1,13 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import RecipeDetail from "./components/RecipeDetail";
+import AddRecipeForm from "./components/AddRecipeForm";
 
 function App() {
   return (
     <Router>
+      <nav className="p-4 bg-gray-800 text-white flex justify-between">
+        <Link to="/">Home</Link>
+        <Link to="/add" className="ml-4">Add Recipe</Link>
+      </nav>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/recipe/:id" element={<RecipeDetail />} />
+        <Route path="/add" element={<AddRecipeForm />} />
       </Routes>
     </Router>
   );
